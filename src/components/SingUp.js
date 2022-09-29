@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+
+import { validate } from './validate';
 
 const SingUp = () => {
   const [data, setData] = useState({
@@ -8,6 +10,13 @@ const SingUp = () => {
     confirmPassword: '',
     isAccepted: false,
   });
+
+  const [errors, setErrors] = useState({});
+
+  useEffect(() => {
+    setErrors(validate(data));
+    console.log(errors);
+  }, [data]);
 
   const changeHandler = (event) => {
     if (event.target.value === event.target.isAccepted) {
