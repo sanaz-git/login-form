@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Link } from 'react-router-dom';
 
 import { validate } from './validate';
 import { notify } from './toast';
@@ -19,7 +20,7 @@ const SingUp = () => {
   const [touched, setTouched] = useState({});
 
   useEffect(() => {
-    setErrors(validate(data));
+    setErrors(validate(data, 'signup'));
     // console.log(errors);
   }, [data, touched]);
 
@@ -56,7 +57,7 @@ const SingUp = () => {
   return (
     <div className={styles.container}>
       <form onSubmit={submitHandler} className={styles.formContainer}>
-        <h2 className={styles.header}>SingUp</h2>
+        <h2 className={styles.header}>SignUp</h2>
         <div className={styles.formField}>
           <label>Name</label>
           <input
@@ -126,7 +127,7 @@ const SingUp = () => {
           )}
         </div>
         <div className={styles.formField}>
-          <div class={styles.checkboxContainer}>
+          <div className={styles.checkboxContainer}>
             <label>I accept terms of policy</label>
             <input
               type="checkbox"
@@ -141,8 +142,8 @@ const SingUp = () => {
           )}
         </div>
         <div className={styles.formButtons}>
-          <a href="#">Login</a>
-          <button type="submit">Sing Up</button>
+          <Link to="/login">Login</Link>
+          <button type="submit">Sign Up</button>
         </div>
       </form>
       <ToastContainer />

@@ -1,11 +1,17 @@
-import React from 'react';
 import './App.css';
-import SingUp from './components/SingUp';
+import { Route, Switch, Redirect } from 'react-router-dom';
+
+import SignUp from './components/SignUp';
+import Login from './components/Login';
 
 const App = () => {
   return (
     <div className="App">
-      <SingUp />
+      <Switch>
+        <Route path="/login" component={Login} />
+        <Route path="/signup" component={SignUp} />
+        <Redirect from="/" to="/signup" />
+      </Switch>
     </div>
   );
 };
